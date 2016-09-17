@@ -39,6 +39,19 @@ Aye.options.args.AutoReadyCheck = {
 			,
 			hidden = function() return Aye.db.global.AutoReadyCheck.enable end,
 		},
+		execute7 = {
+			order = 7,
+			type = "execute",
+			name = "Default module settings",
+			desc = "Reset settings of this module to default.\n\n|cff9d9d9dIf you wish to reset settings of all Aye modules instead, "
+				.. "use \"Defaults\" options from left bottom corner of \"Interface\" window, then select \"These Settings\".|r"
+			,
+			func = function()
+				Aye.db.global.AutoReadyCheck = CopyTable(Aye.default.global.AutoReadyCheck);
+				Aye.libs.ConfigRegistry:NotifyChange("Aye");
+			end,
+			hidden = function() return not Aye.db.global.AutoReadyCheck.enable end,
+		},
 		header11 = {
 			order = 11,
 			type = "header",
