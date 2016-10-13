@@ -144,13 +144,30 @@ Aye.options.args.AutoReadyCheck = {
 					set = function(_, v) Aye.db.global.AutoReadyCheck.NotWellFedDisable = v end,
 					disabled = function() return not Aye.db.global.AutoReadyCheck.enable end,
 				},
-				header38 = {
-					order = 38,
+				WellFedTier = {
+					order = 37,
+					name = "Required Well Fed Tier",
+					desc = "Minimum required Well Fed Tier (3 is BiS only)",
+					type = "range",
+					min = 1,
+					max = 3,
+					softMin = 1,
+					softMax = 3,
+					bigStep = 1,
+					get = function() return Aye.db.global.AutoReadyCheck.WellFedTier end,
+					set = function(_, v) Aye.db.global.AutoReadyCheck.WellFedTier = v end,
+					disabled = function() return
+							not Aye.db.global.AutoReadyCheck.enable
+						or	not Aye.db.global.AutoReadyCheck.NotWellFedDisable
+					end,
+				},
+				header39 = {
+					order = 39,
 					type = "header",
 					name = "Minimum Buff Time",
 				},
 				BuffTimeEnable = {
-					order = 40,
+					order = 41,
 					name = "Enable Minimum Buff Time",
 					desc = "Enable Minimum Buff Time setting",
 					type = "toggle",
@@ -166,7 +183,7 @@ Aye.options.args.AutoReadyCheck = {
 					end,
 				},
 				BuffTime = {
-					order = 41,
+					order = 42,
 					name = "Minimum Buff Time (min)",
 					desc = "Disable Auto Ready Check if player buff is close to expire (with remaining time left ≤ given minutes)",
 					type = "range",

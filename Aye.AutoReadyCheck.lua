@@ -32,13 +32,28 @@ Aye.modules.AutoReadyCheck.check = function()
 	if Aye.db.global.AutoReadyCheck.OutsideInstanceDisable		and not IsInInstance()								then return false end;	-- Disable outside Instance
 	
 	for _, buffGroup in pairs({
-		-- settings condition to check									util function to check condition
-		{condition = Aye.db.global.AutoReadyCheck.NoBiSFlaskDisable,	checkingFunction = Aye.utils.Buffs.UnitHasFlask},					-- Disable if No BiS Flask
-		{condition = Aye.db.global.AutoReadyCheck.NoRuneDisable,		checkingFunction = Aye.utils.Buffs.UnitHasRune},					-- Disable if No Rune
-		{condition = Aye.db.global.AutoReadyCheck.NotWellFedDisable,	checkingFunction = Aye.utils.Buffs.UnitIsWellFed},					-- Disable if Not Well Fed
+		-- condition			settings condition to check
+		-- checkingFunction		util function to check condition
+		-- arg2					2nd function argument
+		
+		{ -- Disable if No BiS Flask
+			condition = Aye.db.global.AutoReadyCheck.NoBiSFlaskDisable,
+			checkingFunction = Aye.utils.Buffs.UnitHasFlask,
+			arg2 = nil,
+		},
+		{ -- Disable if No Rune
+			condition = Aye.db.global.AutoReadyCheck.NoRuneDisable,
+			checkingFunction = Aye.utils.Buffs.UnitHasRune,
+			arg2 = nil,
+		},
+		{-- Disable if Not Well Fed
+			condition = Aye.db.global.AutoReadyCheck.NotWellFedDisable,
+			checkingFunction = Aye.utils.Buffs.UnitIsWellFed,
+			arg2 = Aye.db.global.AutoReadyCheck.WellFedTier,
+		},
 	}) do
 		if buffGroup.condition then
-			local buff, note = buffGroup.checkingFunction("player");
+			local buff, note = buffGroup.checkingFunction("player", buffGroup.arg2);
 			if
 					buff ~=1
 				or	(

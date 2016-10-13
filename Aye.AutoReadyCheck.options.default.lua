@@ -12,6 +12,7 @@ Aye.default.global.AutoReadyCheck = {
 	NoBiSFlaskDisable = true,			-- Disable Auto Ready Check if player have No BiS Flask
 	NoRuneDisable = true,				-- Disable Auto Ready Check if player have No Rune
 	NotWellFedDisable = true,			-- Disable Auto Ready Check if no BiS Well Fed buff
+	WellFedTier = 3,					-- Minimum required Well Fed Tier (3 is BiS only)
 	BuffTimeEnable = true,				-- Enable Minimum Buff Time setting
 	BuffTime = 10,						-- Disable Auto Ready Check if players buff is close to expire (with remaining time left ≤ given minutes)
 	GuildGroupDisable = true,			-- Disable Auto Ready Check in Guild group
