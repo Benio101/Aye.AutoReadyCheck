@@ -7,6 +7,8 @@ On Ready Check, automatically respond as **Ready**.
 ## Options
 Aye.AutoReadyCheck is heavily configurable, allowing to perform ready check only when you relly have to.
 
+To access options, open Game Memu → Interface → Addons tab → Aye → Aye.AutoReadyCheck.
+
 ![](http://benio.me/pub/res/img/wow/addons/Aye.AutoReadyCheck.options.png)
 
 ## Depot
