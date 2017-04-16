@@ -1,4 +1,5 @@
 local Aye = Aye;
+if not LibStub:NewLibrary("Aye.utils.Buffs", 1) then return end;
 Aye.utils.Buffs = Aye.utils.Buffs or {};
 
 -- Check if @unitID has rune
@@ -95,7 +96,7 @@ end;
 --
 -- @param		{uint}		unitID			@unitID should be visible (UnitIsVisible)
 -- @param		{uint}		requiredTier	minimum required Tier of buff (default 3)
--- @return		{0|1|2|3|4}	buff			extended buff status:
+-- @return		{0|1|2|3}	buff			extended buff status:
 --
 -- +------+----------+-----+--------+
 -- | buff | Well Fed | BiS | Eating |
@@ -128,6 +129,34 @@ Aye.utils.Buffs.UnitIsWellFed = Aye.utils.Buffs.UnitIsWellFed or function(unitID
 	
 	-- Well Fed
 	for _, buffID in pairs({
+		201640, -- 500 int
+		201639, -- 500 agi
+		201638, -- 500 str
+		201641, -- 750 sta
+	}) do
+		if type(spellID) =="number" and buffID == spellID then
+			return 1, floor(.5+ (expires -GetTime()) /60);
+		end;
+	end;
+	
+	-- Tier 4 Food
+	for _, buffID in pairs({
+		201636, -- 400 int
+		201635, -- 400 agi
+		201634, -- 400 str
+		201637, -- 600 sta
+	}) do
+		if type(spellID) =="number" and buffID == spellID then
+			if requiredTier <=4 then
+				return 1, floor(.5+ (expires -GetTime()) /60);
+			else
+				return 2, "T4";
+			end;
+		end;
+	end;
+	
+	-- Tier 3 Food
+	for _, buffID in pairs({
 		225604, -- 375 mastery
 		225603, -- 375 haste
 		225602, -- 375 crit
@@ -135,7 +164,11 @@ Aye.utils.Buffs.UnitIsWellFed = Aye.utils.Buffs.UnitIsWellFed or function(unitID
 		225606, -- 2831.(6) +haste dps
 	}) do
 		if type(spellID) =="number" and buffID == spellID then
-			return 1, floor(.5+ (expires -GetTime()) /60);
+			if requiredTier <=3 then
+				return 1, floor(.5+ (expires -GetTime()) /60);
+			else
+				return 2, "T3";
+			end;
 		end;
 	end;
 	

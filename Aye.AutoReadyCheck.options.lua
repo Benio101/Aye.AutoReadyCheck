@@ -60,7 +60,6 @@ Aye.options.args.AutoReadyCheck = {
 		AFKdisable = {
 			order = 13,
 			name = "Disable if AFK",
-			desc = "Disable Auto Ready Check if AFK",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.AFKdisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.AFKdisable = v end,
@@ -69,7 +68,6 @@ Aye.options.args.AutoReadyCheck = {
 		DNDdisable = {
 			order = 14,
 			name = "Disable if DND",
-			desc = "Disable Auto Ready Check if DND",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.DNDdisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.DNDdisable = v end,
@@ -78,7 +76,6 @@ Aye.options.args.AutoReadyCheck = {
 		DeadDisable = {
 			order = 16,
 			name = "Disable if Dead",
-			desc = "Disable Auto Ready Check if Dead or Ghost",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.DeadDisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.DeadDisable = v end,
@@ -87,7 +84,6 @@ Aye.options.args.AutoReadyCheck = {
 		CombatDisable = {
 			order = 17,
 			name = "Disable if in Combat",
-			desc = "Disable Auto Ready Check if in Combat",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.CombatDisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.CombatDisable = v end,
@@ -96,7 +92,6 @@ Aye.options.args.AutoReadyCheck = {
 		NotFullHealthDisable = {
 			order = 19,
 			name = "Disable if Not at Full Health",
-			desc = "Disable Auto Ready Check if Not at Full Health",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.NotFullHealthDisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.NotFullHealthDisable = v end,
@@ -105,7 +100,6 @@ Aye.options.args.AutoReadyCheck = {
 		NotFullPowerDisable = {
 			order = 20,
 			name = "Disable if Not at Full Power",
-			desc = "Disable Auto Ready Check if Not at Full Power",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.NotFullPowerDisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.NotFullPowerDisable = v end,
@@ -120,7 +114,6 @@ Aye.options.args.AutoReadyCheck = {
 				NoBiSFlaskDisable = {
 					order = 33,
 					name = "Disable if No BiS Flask",
-					desc = "Disable Auto Ready Check if player have No BiS Flask",
 					type = "toggle",
 					get = function() return Aye.db.global.AutoReadyCheck.NoBiSFlaskDisable end,
 					set = function(_, v) Aye.db.global.AutoReadyCheck.NoBiSFlaskDisable = v end,
@@ -129,7 +122,6 @@ Aye.options.args.AutoReadyCheck = {
 				NoRuneDisable = {
 					order = 34,
 					name = "Disable if No Rune",
-					desc = "Disable Auto Ready Check if player have No Rune",
 					type = "toggle",
 					get = function() return Aye.db.global.AutoReadyCheck.NoRuneDisable end,
 					set = function(_, v) Aye.db.global.AutoReadyCheck.NoRuneDisable = v end,
@@ -138,7 +130,6 @@ Aye.options.args.AutoReadyCheck = {
 				NotWellFedDisable = {
 					order = 36,
 					name = "Disable if Not Well Fed",
-					desc = "Disable Auto Ready Check if no BiS Well Fed buff",
 					type = "toggle",
 					get = function() return Aye.db.global.AutoReadyCheck.NotWellFedDisable end,
 					set = function(_, v) Aye.db.global.AutoReadyCheck.NotWellFedDisable = v end,
@@ -147,12 +138,15 @@ Aye.options.args.AutoReadyCheck = {
 				WellFedTier = {
 					order = 37,
 					name = "Required Well Fed Tier",
-					desc = "Minimum required Well Fed Tier (3 is BiS only)",
+					desc = "Minimum required Well Fed Tier\n\nTier 1: +225 stat or " ..select(2, GetItemInfo(133564)) .."\n"
+						.. "Tier 2: +300 stat or " ..select(2, GetItemInfo(133569)) .."\nTier 3: +375 stat or " ..select(2, GetItemInfo(133574)) .."\n"
+						.. "Tier 4: +400 stat or +600 stamina\nTier 5: +500 stat or +750 stamina"
+					,
 					type = "range",
 					min = 1,
-					max = 3,
+					max = 5,
 					softMin = 1,
-					softMax = 3,
+					softMax = 5,
 					bigStep = 1,
 					get = function() return Aye.db.global.AutoReadyCheck.WellFedTier end,
 					set = function(_, v) Aye.db.global.AutoReadyCheck.WellFedTier = v end,
@@ -169,7 +163,6 @@ Aye.options.args.AutoReadyCheck = {
 				BuffTimeEnable = {
 					order = 41,
 					name = "Enable Minimum Buff Time",
-					desc = "Enable Minimum Buff Time setting",
 					type = "toggle",
 					get = function() return Aye.db.global.AutoReadyCheck.BuffTimeEnable end,
 					set = function(_, v) Aye.db.global.AutoReadyCheck.BuffTimeEnable = v end,
@@ -185,7 +178,7 @@ Aye.options.args.AutoReadyCheck = {
 				BuffTime = {
 					order = 42,
 					name = "Minimum Buff Time (min)",
-					desc = "Disable Auto Ready Check if player buff is close to expire (with remaining time left ≤ given minutes)",
+					desc = "Disable Auto Ready Check if player buff is close to expire |cff9d9d9d(with remaining time left ≤ given minutes)|r",
 					type = "range",
 					min = 0,
 					max = 60,
@@ -214,7 +207,6 @@ Aye.options.args.AutoReadyCheck = {
 		GuildGroupDisable = {
 			order = 53,
 			name = "Disable in Guild group",
-			desc = "Disable Auto Ready Check in Guild group",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.GuildGroupDisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.GuildGroupDisable = v end,
@@ -226,7 +218,6 @@ Aye.options.args.AutoReadyCheck = {
 		LFGDisable = {
 			order = 54,
 			name = "Disable in LFG group",
-			desc = "Disable Auto Ready Check in LFG group",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.LFGDisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.LFGDisable = v end,
@@ -238,7 +229,6 @@ Aye.options.args.AutoReadyCheck = {
 		PvPDisable = {
 			order = 56,
 			name = "Disable on PvP",
-			desc = "Disable Auto Ready Check on PvP (arena, battleground)",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.PvPDisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.PvPDisable = v end,
@@ -250,7 +240,6 @@ Aye.options.args.AutoReadyCheck = {
 		OutsideInstanceDisable = {
 			order = 57,
 			name = "Disable outside Instance",
-			desc = "Disable Auto Ready Check outside Instance",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.OutsideInstanceDisable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.OutsideInstanceDisable = v end,
@@ -262,7 +251,7 @@ Aye.options.args.AutoReadyCheck = {
 		header61 = {
 			order = 61,
 			type = "header",
-			name = "Force Enable on Instances",
+			name = "Force Enable",
 		},
 		description62 = {
 			order = 62,
@@ -272,7 +261,6 @@ Aye.options.args.AutoReadyCheck = {
 		GuildGroupForceEnable = {
 			order = 63,
 			name = "Force Enable in Guild group",
-			desc = "Force Enable Auto Ready Check in Guild group",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.GuildGroupForceEnable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.GuildGroupForceEnable = v end,
@@ -284,7 +272,6 @@ Aye.options.args.AutoReadyCheck = {
 		LFGForceEnable = {
 			order = 64,
 			name = "Force Enable in LFG group",
-			desc = "Force Enable Auto Ready Check in LFG group",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.LFGForceEnable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.LFGForceEnable = v end,
@@ -296,7 +283,6 @@ Aye.options.args.AutoReadyCheck = {
 		PvPForceEnable = {
 			order = 66,
 			name = "Force Enable on PvP",
-			desc = "Force Enable Auto Ready Check on PvP (arena, battleground)",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.PvPForceEnable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.PvPForceEnable = v end,
@@ -308,7 +294,6 @@ Aye.options.args.AutoReadyCheck = {
 		OutsideInstanceForceEnable = {
 			order = 67,
 			name = "Force Enable outside Instance",
-			desc = "Force Enable Auto Ready Check outside Instance",
 			type = "toggle",
 			get = function() return Aye.db.global.AutoReadyCheck.OutsideInstanceForceEnable end,
 			set = function(_, v) Aye.db.global.AutoReadyCheck.OutsideInstanceForceEnable = v end,
