@@ -15,7 +15,7 @@ end;
 Aye.modules.AutoReadyCheck.check = function()
 	if not Aye.db.global.AutoReadyCheck.enable then return false end;
 	
-	if Aye.db.global.AutoReadyCheck.GuildGroupForceEnable		and InGuildParty()									then return true end;	-- Force Enable in Guild group
+	if Aye.db.global.AutoReadyCheck.GuildGroupForceEnable		and Aye.utils.Player.InAllyGroup()					then return true end;	-- Force Enable in Guild group
 	if Aye.db.global.AutoReadyCheck.LFGForceEnable				and IsPartyLFG()									then return true end;	-- Force Enable in LFG group
 	if Aye.db.global.AutoReadyCheck.PvPForceEnable				and Aye.utils.Player.IsOnPvP()						then return true end;	-- Force Enable on PvP
 	if Aye.db.global.AutoReadyCheck.OutsideInstanceForceEnable	and not IsInInstance()								then return true end;	-- Force Enable outside Instance
@@ -26,7 +26,7 @@ Aye.modules.AutoReadyCheck.check = function()
 	if Aye.db.global.AutoReadyCheck.CombatDisable				and UnitAffectingCombat("player")					then return false end;	-- Disable if in Combat
 	if Aye.db.global.AutoReadyCheck.NotFullHealthDisable		and UnitHealth("player") < UnitHealthMax("player")	then return false end;	-- Disable if Not at Full Health
 	if Aye.db.global.AutoReadyCheck.NotFullPowerDisable			and UnitPower("player") < UnitPowerMax("player")	then return false end;	-- Disable if Not at Full Power
-	if Aye.db.global.AutoReadyCheck.GuildGroupDisable			and InGuildParty()									then return false end;	-- Disable in Guild group
+	if Aye.db.global.AutoReadyCheck.GuildGroupDisable			and Aye.utils.Player.InAllyGroup()					then return false end;	-- Disable in Guild group
 	if Aye.db.global.AutoReadyCheck.LFGDisable					and IsPartyLFG()									then return false end;	-- Disable in LFG group
 	if Aye.db.global.AutoReadyCheck.PvPDisable					and Aye.utils.Player.IsOnPvP()						then return false end;	-- Disable on PvP
 	if Aye.db.global.AutoReadyCheck.OutsideInstanceDisable		and not IsInInstance()								then return false end;	-- Disable outside Instance
