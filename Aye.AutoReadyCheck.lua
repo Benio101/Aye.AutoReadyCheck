@@ -15,6 +15,8 @@ end;
 Aye.modules.AutoReadyCheck.check = function()
 	if not Aye.db.global.AutoReadyCheck.enable then return false end;
 	
+	if Aye.db.global.AutoReadyCheck.ForceDisableIfMythicBenched	and Aye.utils.Player.IsMythicBenched()				then return false end;	-- Force Disable if Mythic Benched
+	
 	if Aye.db.global.AutoReadyCheck.GuildGroupForceEnable		and Aye.utils.Player.InAllyGroup()					then return true end;	-- Force Enable in Guild group
 	if Aye.db.global.AutoReadyCheck.LFGForceEnable				and IsPartyLFG()									then return true end;	-- Force Enable in LFG group
 	if Aye.db.global.AutoReadyCheck.PvPForceEnable				and Aye.utils.Player.IsOnPvP()						then return true end;	-- Force Enable on PvP
