@@ -1,5 +1,5 @@
 local Aye = Aye;
-if not LibStub:NewLibrary("Aye.utils.Buffs", 1) then return end;
+if not LibStub:NewLibrary("Aye.utils.Buffs", 2) then return end;
 Aye.utils.Buffs = Aye.utils.Buffs or {};
 
 -- Check if @unitID has rune
@@ -15,7 +15,7 @@ Aye.utils.Buffs = Aye.utils.Buffs or {};
 --| else
 --| 	print("player have no rune");
 --| end;
-Aye.utils.Buffs.UnitHasRune = Aye.utils.Buffs.UnitHasRune or function(unitID)
+Aye.utils.Buffs.UnitHasRune = function(unitID)
 	-- Rune
 	for _, buffID in pairs({
 		224001, -- 325 primary stats
@@ -53,7 +53,7 @@ end;
 --| if not buff		then print("player have no flask") end;
 --| if buff == 1	then print("player have BiS flask, time left: " ..note .."min") end;
 --| if buff == 2	then print("player have old flask: " ..note) end;
-Aye.utils.Buffs.UnitHasFlask = Aye.utils.Buffs.UnitHasFlask or function(unitID)
+Aye.utils.Buffs.UnitHasFlask = function(unitID)
 	-- BiS Flask: 1300
 	for _, buffID in pairs({
 		188031, -- 1300 int, Flask of the Whispered Pact
@@ -119,7 +119,7 @@ end;
 --| if buff == 1	then print("player is Well Fed, time left: " ..note .."min") end;	-- BiS "Well Fed" buff, note contains buff time left
 --| if buff == 2	then print("player is Poor Fed: " ..note) end;						-- "Well Fed" buff is not BiS, aka "Poor Fed", note is buff value2 or link to "Well Fed" buff
 --| if buff == 3	then print("player is eating.") end;								-- No "Well Fed" buff, but @unitID is eating, note is "E"
-Aye.utils.Buffs.UnitIsWellFed = Aye.utils.Buffs.UnitIsWellFed or function(unitID, requiredTier)
+Aye.utils.Buffs.UnitIsWellFed = function(unitID, requiredTier)
 	requiredTier = requiredTier == nil and 3 or requiredTier;
 	
 	-- expires	= time at which the aura will expire
