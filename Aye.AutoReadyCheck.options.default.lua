@@ -15,7 +15,6 @@ Aye.default.global.AutoReadyCheck = {
 	WellFedTier = 3,					-- Minimum required Well Fed Tier (5 is BiS only)
 	BuffTimeEnable = true,				-- Enable Minimum Buff Time setting
 	BuffTime = 10,						-- Disable Auto Ready Check if players buff is close to expire (with remaining time left ≤ given minutes)
-	ForceDisableIfMythicBenched = true,	-- Force Disable if Mythic Benched
 	GuildGroupDisable = true,			-- Disable Auto Ready Check in Guild group
 	LFGDisable = false,					-- Disable Auto Ready Check in LFG group
 	PvPDisable = false,					-- Disable Auto Ready Check on PvP (arena, battleground)
@@ -24,4 +23,5 @@ Aye.default.global.AutoReadyCheck = {
 	LFGForceEnable = true,				-- Force Enable Auto Ready Check in LFG group
 	PvPForceEnable = true,				-- Force Enable Auto Ready Check on PvP (arena, battleground)
 	OutsideInstanceForceEnable = false,	-- Force Enable Auto Ready Check outside Instance
+	ForceEnableIfMythicBenched = true,	-- Force Enable if Mythic Benched
 };

@@ -250,18 +250,6 @@ Aye.options.args.AutoReadyCheck = {
 				or	Aye.db.global.AutoReadyCheck.OutsideInstanceForceEnable
 			end,
 		},
-		ForceDisableIfMythicBenched = {
-			order = 59,
-			name = "|cffe6cc80Force Disable|r if Mythic Benched |cff9d9d9d(in Ally Group outside party #1–4)|r",
-			desc = "|cffe6cc80Force Disable|r in Ally Group |cff9d9d9d(at least half of other members are either friends or guildmates)|r on Mythic difficulty if outside party #1–4.\n\n"
-				.. "|cffe6cc80Force Disable|r|cff9d9d9d is most important and overwrites |cffe6cc80Force Enable|r|cff9d9d9d.|r"
-			,
-			type = "toggle",
-			width = "full",
-			get = function() return Aye.db.global.AutoReadyCheck.ForceDisableIfMythicBenched end,
-			set = function(_, v) Aye.db.global.AutoReadyCheck.ForceDisableIfMythicBenched = v end,
-			disabled = function() return not Aye.db.global.AutoReadyCheck.enable end,
-		},
 		header61 = {
 			order = 61,
 			type = "header",
@@ -316,6 +304,16 @@ Aye.options.args.AutoReadyCheck = {
 					not Aye.db.global.AutoReadyCheck.enable
 				or	Aye.db.global.AutoReadyCheck.OutsideInstanceDisable
 			end,
+		},
+		ForceEnableIfMythicBenched = {
+			order = 69,
+			name = "|cffe6cc80Force Enable|r if Mythic Benched |cff9d9d9d(in Ally Group outside party #1–4)|r",
+			desc = "|cffe6cc80Force Enable|r in Ally Group |cff9d9d9d(at least half of other members are either friends or guildmates)|r on Mythic difficulty if outside party #1–4.\n\n",
+			type = "toggle",
+			width = "full",
+			get = function() return Aye.db.global.AutoReadyCheck.ForceEnableIfMythicBenched end,
+			set = function(_, v) Aye.db.global.AutoReadyCheck.ForceEnableIfMythicBenched = v end,
+			disabled = function() return not Aye.db.global.AutoReadyCheck.enable end,
 		},
 	},
 };
