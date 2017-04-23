@@ -258,7 +258,7 @@ Aye.options.args.AutoReadyCheck = {
 		description62 = {
 			order = 62,
 			type = "description",
-			name = "Force Enable Auto Ready Check independing of Player Options.\n",
+			name = "|cffe6cc80Force Enable|r Auto Ready Check independing of Player Options.\n",
 		},
 		GuildGroupForceEnable = {
 			order = 63,
