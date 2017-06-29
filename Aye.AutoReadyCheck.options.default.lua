@@ -23,5 +23,5 @@ Aye.default.global.AutoReadyCheck = {
 	LFGForceEnable = true,				-- Force Enable Auto Ready Check in LFG group
 	PvPForceEnable = true,				-- Force Enable Auto Ready Check on PvP (arena, battleground)
 	OutsideInstanceForceEnable = false,	-- Force Enable Auto Ready Check outside Instance
-	ForceEnableIfMythicBenched = true,	-- Force Enable if Mythic Benched
+	ForceEnableIfBenched = true,		-- Force Enable if Benched
 };

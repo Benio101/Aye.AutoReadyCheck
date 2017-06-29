@@ -305,10 +305,12 @@ Aye.options.args.AutoReadyCheck = {
 				or	Aye.db.global.AutoReadyCheck.OutsideInstanceDisable
 			end,
 		},
-		ForceEnableIfMythicBenched = {
+		ForceEnableIfBenched = {
 			order = 69,
-			name = "|cffe6cc80Force Enable|r if Mythic Benched |cff9d9d9d(in Ally Group outside party #1–4)|r",
-			desc = "|cffe6cc80Force Enable|r in Ally Group |cff9d9d9d(at least half of other members are either friends or guildmates)|r on Mythic difficulty if outside party #1–4.\n\n",
+			name = "|cffe6cc80Force Enable|r if Benched |cff9d9d9d(in Ally Group outside party #1–4/6)|r",
+			desc = "|cffe6cc80Force Enable|r in Ally Group |cff9d9d9d(at least half of other members are either friends or guildmates)|r if outside party"
+				.. " #1–4 |cff9d9d9d(on Mythic difficulty)|r or #1–6 |cff9d9d9d(on Normal/Heroic difficulty)|r.\n\n"
+			,
 			type = "toggle",
 			width = "full",
 			get = function() return Aye.db.global.AutoReadyCheck.ForceEnableIfMythicBenched end,
