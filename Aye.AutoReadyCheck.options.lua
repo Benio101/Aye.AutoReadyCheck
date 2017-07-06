@@ -33,9 +33,9 @@ Aye.options.args.AutoReadyCheck = {
 		description6 = {
 			order = 6,
 			type = "description",
-			name = "This module is currently temporary |cff9d9d9ddisabled|r at will and should no longer work.\n"
+			name = "\nThis module is currently temporary |cff9d9d9ddisabled|r at will and should no longer work.\n"
 				.. "|cff9d9d9dIf you wish to keep this module disabled, you should disable related addon completelly.\n"
-				.. "You can always re–enable module by re–enabling related addon addon the same way.\n|r"
+				.. "You can always re–enable module by re–enabling related addon addon the same way.|r"
 			,
 			hidden = function() return Aye.db.global.AutoReadyCheck.enable end,
 		},
@@ -51,6 +51,11 @@ Aye.options.args.AutoReadyCheck = {
 				Aye.libs.ConfigRegistry:NotifyChange("Aye");
 			end,
 			hidden = function() return not Aye.db.global.AutoReadyCheck.enable end,
+		},
+		description10 = {
+			order = 10,
+			type = "description",
+			name = "\n",
 		},
 		header11 = {
 			order = 11,
@@ -156,6 +161,11 @@ Aye.options.args.AutoReadyCheck = {
 						or	not Aye.db.global.AutoReadyCheck.NotWellFedDisable
 					end,
 				},
+				description38 = {
+					order = 38,
+					type = "description",
+					name = "\n",
+				},
 				header39 = {
 					order = 39,
 					type = "header",
@@ -199,6 +209,11 @@ Aye.options.args.AutoReadyCheck = {
 					end,
 				},
 			},
+		},
+		description50 = {
+			order = 50,
+			type = "description",
+			name = "\n",
 		},
 		header51 = {
 			order = 51,
@@ -249,6 +264,11 @@ Aye.options.args.AutoReadyCheck = {
 					not Aye.db.global.AutoReadyCheck.enable
 				or	Aye.db.global.AutoReadyCheck.OutsideInstanceForceEnable
 			end,
+		},
+		description60 = {
+			order = 60,
+			type = "description",
+			name = "\n",
 		},
 		header61 = {
 			order = 61,
