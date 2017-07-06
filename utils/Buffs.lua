@@ -1,5 +1,5 @@
 local Aye = Aye;
-if not LibStub:NewLibrary("Aye.utils.Buffs", 3) then return end;
+if not LibStub:NewLibrary("Aye.utils.Buffs", 4) then return end;
 Aye.utils.Buffs = Aye.utils.Buffs or {};
 
 -- Check if @unitID has rune
@@ -223,25 +223,10 @@ Aye.utils.Buffs.UnitIsWellFed = function(unitID, requiredTier)
 		return 3, "E";
 	end;
 	
-	-- get localized "Well Fed" buff name
-	-- @todo move it, or rewrite a bit
-	local langs = {
-		deDE = "de",
-		enGB = "en",
-		enUS = "en",
-		esES = "es",
-		esMX = "es",
-		frFR = "fr",
-		itIT = "it",
-		koKR = "ko",
-		ptBR = "pt",
-		ruRU = "ru",
-		zhCN = "cn",
-		zhTW = "cn",
-	};
-	local lang = langs[GetLocale()];
-	if not lang then lang = "en" end;
-	local L_WellFed = {
+	-- expires	= time at which the aura will expire
+	-- spellID	= spellID of the aura, used to identify Well Fed buff
+	-- value2	= how much stat is applied on buff, ex. 125 for +125 mastery
+	local _, _, _, _, _, _, expires, _, _, _, spellID, _, _, _, value2 = UnitBuff(unitID, Aye.utils.Lang.getLocalized({{
 		de = "Satt",
 		en = "Well Fed",
 		es = "Bien alimentado",
@@ -251,13 +236,7 @@ Aye.utils.Buffs.UnitIsWellFed = function(unitID, requiredTier)
 		pt = "Bem Alimentado",
 		ru = "Сытость",
 		cn = "进食充分",
-	};
-	local WellFed = L_WellFed[lang];
-	
-	-- expires	= time at which the aura will expire
-	-- spellID	= spellID of the aura, used to identify Well Fed buff
-	-- value2	= how much stat is applied on buff, ex. 125 for +125 mastery
-	local _, _, _, _, _, _, expires, _, _, _, spellID, _, _, _, value2 = UnitBuff(unitID, WellFed);
+	}}));
 	
 	-- Poor Fed
 	if type(expires) =="number" and expires >0 and type(value2) =="number" and value2 >=0 then
