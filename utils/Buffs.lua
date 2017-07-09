@@ -226,7 +226,7 @@ Aye.utils.Buffs.UnitIsWellFed = function(unitID, requiredTier)
 	-- expires	= time at which the aura will expire
 	-- spellID	= spellID of the aura, used to identify Well Fed buff
 	-- value2	= how much stat is applied on buff, ex. 125 for +125 mastery
-	local _, _, _, _, _, _, expires, _, _, _, spellID, _, _, _, value2 = UnitBuff(unitID, Aye.utils.Lang.getLocalized({{
+	local _, _, _, _, _, _, expires, _, _, _, spellID, _, _, _, value2 = UnitBuff(unitID, Aye.utils.Lang.getLocalized({
 		de = "Satt",
 		en = "Well Fed",
 		es = "Bien alimentado",
@@ -236,7 +236,7 @@ Aye.utils.Buffs.UnitIsWellFed = function(unitID, requiredTier)
 		pt = "Bem Alimentado",
 		ru = "Сытость",
 		cn = "进食充分",
-	}}));
+	}));
 	
 	-- Poor Fed
 	if type(expires) =="number" and expires >0 and type(value2) =="number" and value2 >=0 then
